@@ -1,0 +1,16 @@
+.logo {
+  width: 45%;
+  height: auto;
+}
+
+.container {
+  margin: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.radioGroup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
