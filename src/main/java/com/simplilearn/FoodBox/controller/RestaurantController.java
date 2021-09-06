@@ -71,12 +71,6 @@ public class RestaurantController {
         .orElseThrow(() -> new RestaurantNotExistException("Restaurant doesn't exist"));
   }
 
-  @PostMapping(path = "/logout")
-  public int logoutRestaurant() {
-    System.out.println("logout the user");
-    return 1;
-  }
-
   @GetMapping(path = "/myActiveOrders/" + "{id}")
   public List<Order> getActiveOrders(@PathVariable("id") String id)
       throws RestaurantNotExistException {
@@ -206,7 +200,7 @@ public class RestaurantController {
   public List<Comment> findCommentsByRestaurant(@PathVariable("id") String id)
       throws RestaurantNotExistException {
     Optional<Restaurant> restaurantOptional = restaurantService.getRestaurant(id);
-    if (restaurantOptional.isEmpty()) throw new RestaurantNotExistException("User doesn't exist");
+    if (restaurantOptional.isEmpty()) throw new RestaurantNotExistException("Restaurant doesn't exist");
     return orderService.restaurantGetComments(id);
   }
 

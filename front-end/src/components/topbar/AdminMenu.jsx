@@ -3,6 +3,8 @@ import {
   Typography, Grid, Menu, MenuItem, IconButton, Button, Dialog, TextField
 } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
+import HomeIcon from '@material-ui/icons/Home';
+import { withRouter } from "react-router-dom";
 const axios = require('axios').default;
 
 class AdminMenu extends React.Component {
@@ -160,9 +162,17 @@ class AdminMenu extends React.Component {
     });
   }
 
+  openHome=()=>{
+	this.props.history.push("/admin/home");
+  }
+
   render() {
     return (
       <Grid container>
+		<IconButton edge="start" style={{color: "black"}} aria-label="menu" onClick={this.openHome} >
+          <HomeIcon/>
+          <Typography variant="h5">Home</Typography>
+        </IconButton>
         <IconButton edge="end" style={{color: "black"}} aria-label="menu" onClick={this.openMenu} >
           <SettingsIcon/>
           <Typography variant="h5">My Account</Typography>
@@ -342,4 +352,4 @@ class AdminMenu extends React.Component {
   }
 }
 
-export default AdminMenu;
+export default withRouter(AdminMenu);

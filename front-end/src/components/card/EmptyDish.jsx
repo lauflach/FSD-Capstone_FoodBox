@@ -45,12 +45,12 @@ class EmptyDish extends React.Component {
     return this.props.currentUser ? (
       <Card>
         <CardHeader
-          style={{backgroundColor: "#FAFAD2", height: "auto"}}
+          style={{backgroundColor: "#f5cfbf", height: "auto"}}
           titleTypographyProps={{variant:'body1'}}
-          title={<i>Please provide the dish detail</i>}
-          subheader="Press {+} and you will see how your dish looks like"
+          title={<b>Include Dish</b>}
+          subheader="Please fill information and click {+} to include your new dish"
         />
-        <CardContent>
+        <CardContent style={{backgroundColor: "#faeae3"}}>
           <form onSubmit={this.addToMenu}>
             <TextField
               variant="outlined"

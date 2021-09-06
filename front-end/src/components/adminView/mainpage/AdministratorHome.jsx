@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import RestaurantAdminCard from "../../card/RestaurantAdminCard";
@@ -73,10 +74,14 @@ filterSearch(){}
       ).catch(err => console.log(err));
   }
 
+  openHome=()=>{
+	this.props.history.push("/admin/home");
+  }
+
   render() {
     return this.props.currentUser ? (
       <div>
-        <Grid container justify="center">
+        <Grid container justify="space-evenly">
           <Grid item>
             <Paper component="form" onSubmit={this.handleSearch} style={{width: 400, padding: '2px 4px', display: "spac"}} >
               <InputBase
@@ -89,6 +94,15 @@ filterSearch(){}
                 <SearchIcon />
               </IconButton>
             </Paper>
+          </Grid>
+          <Grid item>
+            	<Button
+					type="button"
+					variant="contained"
+					color="primary"
+					onClick={this.createAccount}
+				>Add Restaurant
+          		</Button>
           </Grid>
           <Grid item xs={12}>
             <div className="cardbody">

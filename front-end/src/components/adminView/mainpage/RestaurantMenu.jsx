@@ -43,21 +43,13 @@ class RestaurantMenu extends React.Component {
   }
 
 	updateInfo=()=>{	
-		this.props.history.push("/restaurant/information/"+this.state.restaurantId);
+		this.props.history.push("/admin/restaurant/information/"+this.props.currentUser.id);
 	}
 
   render() {
     return this.props.currentUser && this.state.restaurant ? (
       <Grid container spacing={3} justify="space-evenly">
-		<Button
-			type="button"
-			fullWidth
-			variant="contained"
-			color="primary"
-			onClick={this.updateInfo}
-		>Update Information
-		</Button>		
-
+		
         {this.state.menu ? 
           (this.state.menu.map((dish, index) => (
             <Grid item xs={3} key={index}>
@@ -66,9 +58,20 @@ class RestaurantMenu extends React.Component {
           ))) : null
         }
         <Grid item xs={3}>
-          <EmptyDish getAllDishes={this.getAllDishes} currentUser={this.props.currentUser} />
+          	<EmptyDish getAllDishes={this.getAllDishes} currentUser={this.props.currentUser} />
+
+			<Button
+				type="button"
+				fullWidth
+				variant="contained"
+				color="primary"
+				onClick={this.updateInfo}
+			>Update Restaurant Information
+			</Button>	
         </Grid>
-      </Grid>
+
+      </Grid>	
+
     ) : <div>The restaurant is not available</div>
   }
 }

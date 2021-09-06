@@ -133,7 +133,7 @@ public class RestaurantServiceImpl implements RestaurantService<Restaurant> {
         return restaurant.getId();
       }
     }
-    System.out.println("Given userName doesn't found in restaurant database");
+    System.out.println("Given name doesn't found in restaurant database");
     return null;
   }
 

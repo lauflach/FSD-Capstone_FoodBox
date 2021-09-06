@@ -26,6 +26,7 @@ class RestaurantInfo extends React.Component {
       tag3 : "",
       alert : ""
     }
+	this.getRestaurant = this.getRestaurant.bind(this);
     this.getInformation = this.getInformation.bind(this);
     this.updateInformation = this.updateInformation.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -35,8 +36,16 @@ class RestaurantInfo extends React.Component {
     this.getInformation();
   }
 
+  getRestaurant() {
+    axios.get("/api/restaurant/" + this.state.restaurantId).then(
+      response => {
+        this.setState({restaurant: response.data});
+      }
+    ).catch(err => console.log(err));
+  }
+
   getInformation() {
-    let restaurantId = this.props.currentUser.id;
+    let restaurantId = this.state.restaurantId;
     axios.get("/api/restaurant/information/" + restaurantId).then(
       response => {
         this.setState({
@@ -57,7 +66,7 @@ class RestaurantInfo extends React.Component {
   updateInformation(event) {
     event.preventDefault();
     axios.post("/api/restaurant/information/", {
-      restaurantId : this.props.currentUser.id,
+      restaurantId : this.state.restaurantId,
       status : this.state.status === "open" ? true : false,
 	  cousine : this.state.cousine,
       name : this.state.name,
