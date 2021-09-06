@@ -89,7 +89,7 @@ render() {
 							<RadioGroup row aria-label="UserType" name="userType" value={this.state.userType} onChange={event => this.handleChange({ userType: event.target.value })} className="radioGroup">
 								<FormLabel component="legend">Login as a:&nbsp;&nbsp;</FormLabel> 
 								<FormControlLabel value="customer" control={<Radio />} label="Customer" />
-								<FormControlLabel value="restaurant" control={<Radio />} label="Restaurant" />
+								<FormControlLabel value="admin" control={<Radio />} label="Admin" />
 							</RadioGroup>
 						</FormControl>
 						<br />

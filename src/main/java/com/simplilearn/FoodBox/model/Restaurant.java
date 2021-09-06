@@ -2,50 +2,49 @@ package com.simplilearn.FoodBox.model;
 
 import java.util.List;
 
-public class Restaurant extends User {
-  private RestaurantInfo information;
-  private List<Dish> menu;
+import org.springframework.data.annotation.Id;
 
-  public Restaurant() {
-    this.setType("restaurant");
-  }
+public class Restaurant {
+	
+	@Id
+	private String id;
 
-  public Restaurant(String userName, String password, String phoneNumber, String address,
-      String city, String state, String zip, RestaurantInfo information,
-      List<Dish> menu) {
-    super(userName, password, phoneNumber, address, city, state, zip);
-    this.setType("restaurant");
-    this.information = information;
-    this.menu = menu;
-  }
+	private RestaurantInfo information;
+	private List<Dish> menu;
 
-  public Restaurant(String userName, String password, String phoneNumber, String address,
-      String city, String state, String zip) {
-    super(userName, password, phoneNumber, address, city, state, zip);
-    this.setType("restaurant");
-  }
+	public Restaurant(RestaurantInfo information, List<Dish> menu) {
+		this.information = information;
+		this.menu = menu;
+	}
 
-  public RestaurantInfo getInformation() {
-    return information;
-  }
+	public Restaurant() {}
+	
+	public String getId() {
+	    return id;
+	  }
 
-  public void setInformation(RestaurantInfo information) {
-    this.information = information;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public List<Dish> getMenu() {
-    return menu;
-  }
+	public RestaurantInfo getInformation() {
+		return information;
+	}
 
-  public void setMenu(List<Dish> menu) {
-    this.menu = menu;
-  }
+	public void setInformation(RestaurantInfo information) {
+		this.information = information;
+	}
 
-  @Override
-  public String toString() {
-    return "Restaurant{" +
-        "information=" + information +
-        ", menu=" + menu +
-        '}';
-  }
+	public List<Dish> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(List<Dish> menu) {
+		this.menu = menu;
+	}
+
+	@Override
+	public String toString() {
+		return "Restaurant{" + "information=" + information + ", menu=" + menu + '}';
+	}
 }

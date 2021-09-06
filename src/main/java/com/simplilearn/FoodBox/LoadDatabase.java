@@ -1,12 +1,14 @@
-package com.simplilearn.FoodBox;
-
+//package com.simplilearn.FoodBox;
+//
 //import com.simplilearn.FoodBox.model.Comment;
 //import com.simplilearn.FoodBox.model.Customer;
+//import com.simplilearn.FoodBox.model.Administrator;
 //import com.simplilearn.FoodBox.model.Dish;
 //import com.simplilearn.FoodBox.model.Order;
 //import com.simplilearn.FoodBox.model.Restaurant;
 //import com.simplilearn.FoodBox.model.RestaurantInfo;
 //import com.simplilearn.FoodBox.model.SearchEngine;
+//import com.simplilearn.FoodBox.repository.AdministratorRepository;
 //import com.simplilearn.FoodBox.repository.CustomerRepository;
 //import com.simplilearn.FoodBox.repository.OrderRepository;
 //import com.simplilearn.FoodBox.repository.RestaurantRepository;
@@ -21,14 +23,14 @@ package com.simplilearn.FoodBox;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 //
 //// This class is used to refresh the database. It will delete all existing data and add the default ones
-//// The default data contains one customer, one driver, two restaurants, two finished orders. Each restaurant contains three dishes.
+//// The default data contains one customer, two restaurants, two finished orders. Each restaurant contains three dishes.
 //
 //@SpringBootApplication
 //public class LoadDatabase implements CommandLineRunner {
 //  @Autowired
 //  private CustomerRepository customerRepository;
 //  @Autowired
-//  private DriverRepository driverRepository;
+//  private AdministratorRepository adminRepository;
 //  @Autowired
 //  private RestaurantRepository restaurantRepository;
 //  @Autowired
@@ -44,84 +46,85 @@ package com.simplilearn.FoodBox;
 //  @Override
 //  public void run(String... args) throws Exception {
 //    customerRepository.deleteAll();
-//    Customer customer1 = new Customer("tma", passwordService.generatePassword("12345"),
+//    Customer customer1 = new Customer("user1", passwordService.generatePassword("user"),
 //        "7739973942", "1512 NW 63rd St", "Seattle", "WA", "98107");
 //    customerRepository.save(customer1);
-//
-//    driverRepository.deleteAll();
-//    Driver driver1 = new Driver("Bruce", passwordService.generatePassword("12345"), "5674243435",
-//        "401 NE Northgate Way", "Seattle", "WA", "98125");
-//    driverRepository.save(driver1);
+//    adminRepository.deleteAll();
+//    Administrator admin = new Administrator("admin", passwordService.generatePassword("admin"),
+//        "999999999", "N/A", "N/A", "N/A", "00000");
+//    adminRepository.save(admin);
 //
 //    RestaurantInfo restaurantInfo1 = new RestaurantInfo();
 //    restaurantInfo1.setOpen(true);
-//    restaurantInfo1.setRestaurantName("Macdonald");
-//    restaurantInfo1.setDescription("We serve best fast food!");
+//    restaurantInfo1.setCousine("Burguers");
+//    restaurantInfo1.setRestaurantName("Burguer King");
+//    restaurantInfo1.setDescription("Best Burguers!");
 //    restaurantInfo1.setImageUrl(
-//        "https://i.pinimg.com/originals/f4/4e/ec/f44eecf0fa921427f4a4669fb8f69115.png");
+//        "https://bk-cms-dev.s3.amazonaws.com/_800x600_crop_center-center_none/Burger-King-Novo-logo.png?mtime=20210125132538&focal=none&tmtime=20210726090340");
 //    restaurantInfo1.setTag1("fastfood");
-//    restaurantInfo1.setTag2("cheap");
+//    restaurantInfo1.setTag2("burguer");
 //    restaurantInfo1.setTag3("hamburger");
 //
 //    RestaurantInfo restaurantInfo2 = new RestaurantInfo();
 //    restaurantInfo2.setOpen(true);
-//    restaurantInfo2.setRestaurantName("PizzaHut");
-//    restaurantInfo2.setDescription("We serve pizza and salad");
+//    restaurantInfo1.setCousine("Pizza");
+//    restaurantInfo2.setRestaurantName("Domino's Pizza");
+//    restaurantInfo2.setDescription("BestPizza!");
 //    restaurantInfo2.setImageUrl(
-//        "https://yt3.ggpht.com/a/AATXAJwkXJs-JbKCe4ab7wNKGtzjHVuyingDGT7bzL5Okw=s900-c-k-c0xffffffff-no-rj-mo");
+//        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN8KP29vdUJseIajxUpzV3QwrSVG_rUU-ZOg&usqp=CAU");
 //    restaurantInfo2.setTag1("italian");
-//    restaurantInfo2.setTag2("healthy");
-//    restaurantInfo2.setTag3("party");
+//    restaurantInfo2.setTag2("pizza");
+//    restaurantInfo2.setTag3("fastfood");
 //
 //    RestaurantInfo restaurantInfo3 = new RestaurantInfo();
 //    restaurantInfo3.setOpen(false);
-//    restaurantInfo3.setRestaurantName("Water Bar");
-//    restaurantInfo3.setDescription("We serve all kind of drinks");
+//    restaurantInfo3.setRestaurantName("Homer's Bar");
+//    restaurantInfo3.setDescription("Best drinks!");
 //    restaurantInfo3.setImageUrl(
-//        "https://scx2.b-cdn.net/gfx/news/hires/2019/water.jpg"
+//        "https://img.elo7.com.br/product/main/2F2B0AC/arquivo-topo-de-bolo-homer-simpson-chop-em-camadas-arquivo.jpg"
 //    );
-//    restaurantInfo3.setTag1("juice");
+//    restaurantInfo3.setTag1("alcohol");
 //    restaurantInfo3.setTag2("beer");
 //    restaurantInfo3.setTag3("drink");
 //
 //    Dish dish1 = new Dish();
-//    dish1.setDishName("Big Mac");
+//    dish1.setDishName("Whopper");
 //    dish1.setImageUrl(
-//        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Big-Mac.jpg");
+//        "https://bk-cms-dev.s3.amazonaws.com/Whopper_thumb_639x324-100k_2020-12-18-193933.png?mtime=20201218143933&focal=none");
 //    dish1.setPrice(5);
 //
 //    Dish dish2 = new Dish();
-//    dish2.setDishName("Fried Chicken");
-//    dish2.setImageUrl("https://content.fortune.com/wp-content/uploads/2015/03/ap956240873949.jpg");
+//    dish2.setDishName("Chicken Fries");
+//    dish2.setImageUrl("https://wp-content.bluebus.com.br/wp-content/uploads/2014/08/BKChickenFries.jpg");
 //    dish2.setPrice(4);
 //
 //    Dish dish3 = new Dish();
 //    dish3.setDishName("Fries");
 //    dish3
-//        .setImageUrl("https://www.wired.com/wp-content/uploads/2014/06/qq_whatsinside_fries_f.jpg");
+//        .setImageUrl("https://www.pngkit.com/png/detail/61-612899_food-cooking-burger-king-french-fries-png.png");
 //    dish3.setPrice(3);
 //
 //    Dish dish4 = new Dish();
-//    dish4.setDishName("Pizza");
+//    dish4.setDishName("Pepperoni");
 //    dish4.setImageUrl(
 //        "https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/story/pizza-hut-turns-comeback-expert_0.jpg?itok=U_V-5YAD");
 //    dish4.setPrice(22);
 //
 //    Dish dish5 = new Dish();
-//    dish5.setDishName("Salad");
+//    dish5.setDishName("Muzzarela");
 //    dish5.setImageUrl(
-//        "https://www.howsweeteats.com/wp-content/uploads/2020/05/summer-salad-16-500x375.jpg");
+//        "https://static.portaldacidade.com/unsafe/1150x767/https://s3.amazonaws.com/fozdoiguacu.portaldacidade.com/img/news/2018-11/pizza-hut-da-50-de-desconto-na-pizza-de-mussarela-na-semana-da-black-friday-5bf3519121563.png");
 //    dish5.setPrice(13);
 //
 //    Dish dish6 = new Dish();
-//    dish6.setDishName("Soup");
+//    dish6.setDishName("Margherita");
 //    dish6.setImageUrl(
-//        "https://www.inspiredtaste.net/wp-content/uploads/2018/10/Homemade-Vegetable-Soup-Recipe-2-1200.jpg");
+//        "http://rossopizza.com.br/salao/wp-content/uploads/2019/09/istock-181175167.jpg");
 //    dish6.setPrice(7.5);
 //
 //    Dish dish7 = new Dish();
-//    dish7.setDishName("Orange Juice");
-//    dish7.setImageUrl("https://thumbs.dreamstime.com/b/fresh-orange-juice-vitamins-health-table-fruits-jucie-78350628.jpg");
+//    dish7.setDishName("Beer");
+//    dish7.setImageUrl("https://sochoppmaringa.com.br/wp-content/uploads/2019/08/chopp-pilsen-premium-600x600.jpeg");
 //    dish7.setPrice(5);
 //
 //    List<Dish> dishes1 = new ArrayList<>();
@@ -138,11 +141,9 @@ package com.simplilearn.FoodBox;
 //    dishes3.add(dish7);
 //
 //    restaurantRepository.deleteAll();
-//    Restaurant restaurant1 = new Restaurant("mcd", passwordService.generatePassword("12345"),
-//        "1234567890", "9000 Holman Rd NW", "Seattle", "WA", "98117", restaurantInfo1, dishes1);
-//    Restaurant restaurant2 = new Restaurant("pizza", passwordService.generatePassword("12345"),
-//        "1234567890", "23830 Hwy 99 Ste 118", "Edmonds", "WA", "98026", restaurantInfo2, dishes2);
-//    Restaurant restaurant3 = new Restaurant("bar", passwordService.generatePassword("12345"), "1234567890", "309 N 36th St", "Seattle", "WA", "98103", restaurantInfo3, dishes3);
+//    Restaurant restaurant1 = new Restaurant(restaurantInfo1, dishes1);
+//    Restaurant restaurant2 = new Restaurant(restaurantInfo2, dishes2);
+//    Restaurant restaurant3 = new Restaurant(restaurantInfo3, dishes3);
 //    restaurantRepository.save(restaurant1);
 //    restaurantRepository.save(restaurant2);
 //    restaurantRepository.save(restaurant3);
@@ -176,7 +177,6 @@ package com.simplilearn.FoodBox;
 //    orderRepository.deleteAll();
 //    Order order1 = new Order();
 //    order1.setCustomerId(customer1.getId());
-//    order1.setDriverId(driver1.getId());
 //    order1.setRestaurantId(restaurant1.getId());
 //    order1.setStartTime(LocalDateTime.of(2020, 1, 1, 19, 30));
 //    order1.setDelivery(true);
@@ -191,7 +191,6 @@ package com.simplilearn.FoodBox;
 //    order1.setComment(comment1);
 //    Order order2 = new Order();
 //    order2.setCustomerId(customer1.getId());
-//    order2.setDriverId(driver1.getId());
 //    order2.setRestaurantId(restaurant2.getId());
 //    order2.setStartTime(LocalDateTime.of(2020, 2, 3, 11, 25));
 //    order2.setDelivery(true);
@@ -206,7 +205,6 @@ package com.simplilearn.FoodBox;
 //    order2.setComment(comment2);
 //    Order order3 = new Order();
 //    order3.setCustomerId(customer1.getId());
-//    order3.setDriverId(driver1.getId());
 //    order3.setRestaurantId(restaurant3.getId());
 //    order3.setStartTime(LocalDateTime.of(2020, 1, 1, 19, 30));
 //    order3.setDelivery(true);
@@ -219,7 +217,6 @@ package com.simplilearn.FoodBox;
 //    order3.setPrice(price3);
 //    Order order4 = new Order();
 //    order4.setCustomerId(customer1.getId());
-//    order4.setDriverId(driver1.getId());
 //    order4.setRestaurantId(restaurant2.getId());
 //    order4.setStartTime(LocalDateTime.of(2020, 2, 3, 11, 25));
 //    order4.setDelivery(true);
@@ -230,7 +227,7 @@ package com.simplilearn.FoodBox;
 //      price4 += dish.getPrice();
 //    }
 //    order4.setPrice(price4);
-//    Comment comment3 = new Comment(5, "The delivery is very fast!!!");
+//    Comment comment3 = new Comment(5, "Great Place!!!");
 //    order4.setComment(comment3);
 //    orderRepository.save(order1);
 //    orderRepository.save(order2);

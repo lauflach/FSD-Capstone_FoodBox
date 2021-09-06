@@ -113,7 +113,6 @@ public class OrderServiceImpl implements OrderService {
       Order order = orderOrNot.get();
       if (order.getStartTime() != null && !order.isDelivery()) {
         order.setDelivery(true);
-        order.setDriverId(driverId);
         orderRepository.save(order);
         System.out.println("Driver accepts the order");
         return 1;
@@ -173,26 +172,6 @@ public class OrderServiceImpl implements OrderService {
   public List<Order> getAllPendingOrders() {
     return orderRepository.findAll().stream()
         .filter(order -> order.getStartTime() != null && !order.isDelivery()).collect(
-            Collectors.toList());
-  }
-
-  @Override
-  public Order driverGetActiveOrder(String driverId) {
-    for (Order order : orderRepository.findAll()) {
-      if (order.getDriverId() != null && order.getDriverId().equals(driverId)
-          && order.getEndTime() == null) {
-        return order;
-      }
-    }
-    return null;
-  }
-
-  @Override
-  public List<Order> driverFindPastOrders(String driverId) {
-    return orderRepository.findAll().stream()
-        .filter(order -> order.getDriverId() != null && order.getDriverId().equals(driverId)
-            && order.getEndTime() != null)
-        .collect(
             Collectors.toList());
   }
 

@@ -39,12 +39,6 @@ public interface OrderService {
   // Driver check all orders that waiting for a driver
   List<Order> getAllPendingOrders();
 
-  // Driver get current order
-  Order driverGetActiveOrder(String driverId);
-
-  // Driver check order history
-  List<Order> driverFindPastOrders(String driverId);
-
   // Restaurant check all active orders, no matter there is or isn't a driver
   List<Order> restaurantGetActiveOrders(String restaurantId);
 

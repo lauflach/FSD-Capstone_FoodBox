@@ -26,8 +26,8 @@ class RestaurantView extends React.Component {
             <div className="grid-item">
               <Switch>
                 <Route path="/restaurant/home" render={props => <RestaurantHome {...props} currentUser={this.props.currentUser} />} />
-                <Route path="/restaurant/information" render={props => <RestaurantInfo {...props} currentUser={this.props.currentUser} />} />
-                <Route path="/restaurant/menu" render={props => <RestaurantMenu {...props} currentUser={this.props.currentUser} />} />
+                <Route path="/restaurant/information/:restaurantId" render={props => <RestaurantInfo {...props} currentUser={this.props.currentUser} />} />
+                <Route path="/restaurant/menu/:restaurantId" render={props => <RestaurantMenu {...props} currentUser={this.props.currentUser} />} />
                 <Route path="/restaurant/order" render={props => <RestaurantOrder {...props} currentUser={this.props.currentUser} />} />
                 <Route path="/restaurant/history" render={props => <RestaurantHistory {...props} currentUser={this.props.currentUser} />} />
                 <Redirect path="/restaurant" to="/restaurant/home" />

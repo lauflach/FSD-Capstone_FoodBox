@@ -10,7 +10,6 @@ public class Order {
   private String id;
   private String customerId;
   private String restaurantId;
-  private String driverId;
   private LocalDateTime startTime;
   private boolean delivery;
   private LocalDateTime endTime;
@@ -27,7 +26,6 @@ public class Order {
     this.id = id;
     this.customerId = customerId;
     this.restaurantId = restaurantId;
-    this.driverId = driverId;
     this.startTime = startTime;
     this.delivery = delivery;
     this.endTime = endTime;
@@ -58,14 +56,6 @@ public class Order {
 
   public void setRestaurantId(String restaurantId) {
     this.restaurantId = restaurantId;
-  }
-
-  public String getDriverId() {
-    return driverId;
-  }
-
-  public void setDriverId(String driverId) {
-    this.driverId = driverId;
   }
 
   public LocalDateTime getStartTime() {
@@ -122,7 +112,6 @@ public class Order {
         "id='" + id + '\'' +
         ", customerId='" + customerId + '\'' +
         ", restaurantId='" + restaurantId + '\'' +
-        ", driverId='" + driverId + '\'' +
         ", startTime=" + startTime +
         ", delivery=" + delivery +
         ", endTime=" + endTime +

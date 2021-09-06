@@ -13,7 +13,7 @@ class RestaurantBar extends React.Component {
     return (
       <div>
         <br />
-        <h3><b>Restaurant ToolBar</b></h3>
+        <h3><b>Admin Toolbar</b></h3>
         <br />
         <List component="nav">
           <Link to={"/restaurant/home"} className="link">

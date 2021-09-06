@@ -4,12 +4,17 @@
 }
 
 .littleImage {
-  width: 35px;
-  height: 35px;
+  width: auto;
+  height: 100px;
   margin-right: 15px;
 }
 
 .checkoutBox {
   margin-top: 100px;
   margin-right: 100px;
+}
+
+.inline-block-child {
+  display: inline-block;
+  vertical-align: middle;
 }

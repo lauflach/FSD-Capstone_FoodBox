@@ -1,5 +1,5 @@
 import React from 'react';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
+import FastfoodIcon from '@material-ui/icons/InfoOutlined';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -17,6 +17,7 @@ class RestaurantInfo extends React.Component {
     this.state = {
       information : undefined,
       status : "close",
+	  cousine : "",
       name: "",
       description : "",
       imageUrl : "",
@@ -41,6 +42,7 @@ class RestaurantInfo extends React.Component {
         this.setState({
           information : response.data,
           status : response.data.open ? "open" : "close",
+		  cousine : response.data.cousine ? response.data.cousine : "",
           name : response.data.restaurantName ? response.data.restaurantName : "",
           description : response.data.description ? response.data.description : "",
           imageUrl : response.data.imageUrl ? response.data.imageUrl : "",
@@ -57,6 +59,7 @@ class RestaurantInfo extends React.Component {
     axios.post("/api/restaurant/information/", {
       restaurantId : this.props.currentUser.id,
       status : this.state.status === "open" ? true : false,
+	  cousine : this.state.cousine,
       name : this.state.name,
       description : this.state.description,
       imageUrl : this.state.imageUrl,
@@ -76,15 +79,28 @@ class RestaurantInfo extends React.Component {
     return this.state.information ? (
       <Grid container justify="center">
         <Grid item xs={5}>
-          <div className="container">
+          <div>
             <FastfoodIcon className="icon"/>
             <Typography component="h1" variant="h5">
-              Provide Your Restaurant Detail
+              Update Your Restaurant Detail
             </Typography>
+
             <Typography variant="body1" color="error">
               {this.state.alert}
             </Typography>
+			
             <form onSubmit={this.updateInformation}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Restaurant Cousine"
+                type="text"
+                value={this.state.cousine}
+                autoFocus
+                onChange={event => this.handleChange({cousine: event.target.value})}
+              />
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -106,6 +122,7 @@ class RestaurantInfo extends React.Component {
                 value={this.state.description}
                 onChange={event => this.handleChange({description: event.target.value})}
               />
+			  <img className="littleImage" src= {this.state.imageUrl} alt={this.state.restaurantName} />
               <TextField
                 variant="outlined"
                 margin="normal"

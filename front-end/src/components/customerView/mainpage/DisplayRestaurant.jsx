@@ -55,20 +55,29 @@ class DisplayRestaurant extends React.Component {
   render() {
     return this.props.currentUser && this.state.restaurant ? (
       <div>
-        <Typography variant="h4">
-        <img className="littleImage" src= {this.state.restaurant.information.imageUrl} alt={this.state.restaurant.information.restaurantName} />
-        <i><b>Welcome to {this.state.restaurant.information.restaurantName}</b></i>
-        </Typography>
+
+		<div class='parent'>
+			<div class='child inline-block-child'> 
+			<img className="littleImage" src= {this.state.restaurant.information.imageUrl} alt={this.state.restaurant.information.restaurantName} />
+			</div>
+			<div class='child inline-block-child'>
+			<Typography variant="h4">		
+			<b>Welcome to {this.state.restaurant.information.restaurantName}</b>
+			</Typography>
+			</div>		
+		</div>
+		
         {!this.state.restaurant.information.open ? (
           <Typography variant="body1" color="error">Closed, will go back soon...</Typography>
         ) : null}
-        <br />
+
         <Typography variant="body1" color="textSecondary" component="p">
           <i>{this.state.restaurant.information.description}</i>
         </Typography>
         <br />
         <br />
         <br />
+
         <Grid container spacing={3} justify="space-evenly">
           {this.state.restaurant.menu.map((dish, index) => (
             <Grid item xs={3} key={index}>

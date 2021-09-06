@@ -70,7 +70,7 @@ class Main extends React.Component {
                 ) : (
                   <Redirect path="/customer" to="/login" />
                 )}
-                {this.state.userType && this.state.userType === "restaurant" ? (
+                {this.state.userType && this.state.userType === "admin" ? (
                   <Route path="/restaurant" render={props => <RestaurantView {...props} currentUser={this.state.currentUser} changeView={this.changeView} />} />
                 ) : (
                   <Redirect path="/restaurant" to="/login" />
