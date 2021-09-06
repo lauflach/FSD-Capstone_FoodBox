@@ -4,7 +4,6 @@ com\simplilearn\FoodBox\exception\OrderNotExistException.class
 com\simplilearn\FoodBox\model\Node.class
 com\simplilearn\FoodBox\service\OrderServiceImpl.class
 com\simplilearn\FoodBox\model\Order.class
-com\simplilearn\FoodBox\LoadDatabase.class
 com\simplilearn\FoodBox\repository\RestaurantRepository.class
 com\simplilearn\FoodBox\exception\UserAlreadyExistException.class
 com\simplilearn\FoodBox\exception\OrderNotFinishedException.class

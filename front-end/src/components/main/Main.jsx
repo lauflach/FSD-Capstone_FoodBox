@@ -1,9 +1,9 @@
 import React from 'react';
-import TopBar from '../topbar/Topbar';
+import TopBar from '../topbar/TopBar';
 import Login from '../login/Login';
 import Register from '../register/Register';
 import CustomerView from '../customerView/CustomerView';
-import RestaurantView from '../restaurantView/RestaurantView';
+import AdministratorView from '../adminView/AdministratorView';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {
   Grid
@@ -60,7 +60,9 @@ class Main extends React.Component {
       <Router>
         <Grid container justify="flex-start">
           <Grid item xs={12}>
-            <TopBar changeUser={this.changeUser} view={this.state.view} currentUser={this.state.currentUser} />
+ 			this.state.userType && this.state.userType === "customer" ? (
+            <TopBar changeUser={this.changeUser} view={this.state.view} currentUser={this.state.currentUser} />)
+			
           </Grid>
           <Grid item xs={12}>
             <div className="grid-main">
@@ -71,9 +73,9 @@ class Main extends React.Component {
                   <Redirect path="/customer" to="/login" />
                 )}
                 {this.state.userType && this.state.userType === "admin" ? (
-                  <Route path="/restaurant" render={props => <RestaurantView {...props} currentUser={this.state.currentUser} changeView={this.changeView} />} />
+                  <Route path="/admin" render={props => <AdministratorView {...props} currentUser={this.state.currentUser} changeView={this.changeView} />} />
                 ) : (
-                  <Redirect path="/restaurant" to="/login" />
+                  <Redirect path="/admin" to="/login" />
                 )}
                 {!this.state.userType ? (
                   <Route path="/login" render={props => <Login {...props} changeUser={this.changeUser} />} />

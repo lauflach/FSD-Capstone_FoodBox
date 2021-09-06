@@ -6,23 +6,36 @@ import {
 import DishCard from "../../card/DishCard";
 import EmptyDish from '../../card/EmptyDish';
 import { withRouter } from "react-router-dom";
+
 const axios = require('axios').default;
 
 class RestaurantMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+	  restaurantId: this.props.match.params.restaurantId,
+      restaurant: undefined,
       menu : undefined
     }
+	this.getRestaurant = this.getRestaurant.bind(this);
     this.getAllDishes = this.getAllDishes.bind(this);
   }
 
   componentDidMount() {
+	this.getRestaurant();
     this.getAllDishes();
   }
 
+  getRestaurant() {
+    axios.get("/api/restaurant/" + this.state.restaurantId).then(
+      response => {
+        this.setState({restaurant: response.data});
+      }
+    ).catch(err => console.log(err));
+  }
+
   getAllDishes() {
-    axios.get("/api/restaurant/menu/" + this.props.currentUser.id).then(
+    axios.get("/api/restaurant/menu/" + this.state.restaurantId).then(
       response => {
         this.setState({menu: response.data});
       }
@@ -30,11 +43,11 @@ class RestaurantMenu extends React.Component {
   }
 
 	updateInfo=()=>{	
-		this.props.history.push("/restaurant/information/"+this.props.currentUser.id);
+		this.props.history.push("/restaurant/information/"+this.state.restaurantId);
 	}
 
   render() {
-    return this.props.currentUser ? (
+    return this.props.currentUser && this.state.restaurant ? (
       <Grid container spacing={3} justify="space-evenly">
 		<Button
 			type="button"
@@ -43,7 +56,8 @@ class RestaurantMenu extends React.Component {
 			color="primary"
 			onClick={this.updateInfo}
 		>Update Information
-		</Button>
+		</Button>		
+
         {this.state.menu ? 
           (this.state.menu.map((dish, index) => (
             <Grid item xs={3} key={index}>

@@ -5,6 +5,7 @@ import {
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './TopBar.css';
 import UserMenu from "./UserMenu"
+import AdminMenu from "./AdminMenu"
 const axios = require('axios').default;
 
 const theme = createMuiTheme({
@@ -16,7 +17,7 @@ const theme = createMuiTheme({
 	},
 });
 
-class Topbar extends React.Component {
+class TopBar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -44,11 +45,11 @@ class Topbar extends React.Component {
 	}
 
 	render() {
-		return (
+		return this.props.currentUser ? (
 			<MuiThemeProvider theme={theme}>
 				<AppBar className="topbar" position="absolute" color="secondary">
 					<Toolbar>
-						{this.props.currentUser ?
+						{this.props.currentUser.type ==="customer" ?
 							(<Grid
 								container
 								direction="row"
@@ -66,12 +67,37 @@ class Topbar extends React.Component {
 								<Grid item>
 									<UserMenu currentUser={this.props.currentUser} logoutUser={this.logoutUser} />
 								</Grid>
-							</Grid>) : (<Typography variant="h4"><i><b>Welcome! Please Login</b></i></Typography>)}
+							</Grid>) : (
+									<Grid
+									container
+									direction="row"
+									justify="space-between"
+									alignItems="center"
+									>
+										<Grid item>
+											<Typography variant="h5" color="inherit" classes="white">
+												Hello {this.props.currentUser.userName}
+											</Typography>
+										</Grid>
+										<Grid item>
+											<Typography variant="h5">{this.state.view}</Typography>
+										</Grid>
+										<Grid item>
+											<AdminMenu currentUser={this.props.currentUser} logoutUser={this.logoutUser} />
+										</Grid>
+									</Grid>)}
 					</Toolbar>
 				</AppBar>
 			</MuiThemeProvider>
-		);
+		): (<MuiThemeProvider theme={theme}>
+				<AppBar className="topbar" position="absolute" color="secondary">
+					<Toolbar>
+					<Typography variant="h4"><i><b>Welcome! Please Login</b></i></Typography>
+					</Toolbar>
+				</AppBar>
+			</MuiThemeProvider>
+			);
 	}
 }
 
-export default Topbar;
+export default TopBar;

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 const axios = require('axios').default;
 
-class RestaurantHome extends React.Component {
+class AdministratorHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -107,4 +107,4 @@ filterSearch(){}
   }
 }
 
-export default RestaurantHome;
+export default AdministratorHome;

@@ -3,15 +3,9 @@ import {
   Typography, Grid, Menu, MenuItem, IconButton, Button, Dialog, TextField
 } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
-import CartIcon from '@material-ui/icons/ShoppingCart';
-import OrderIcon from '@material-ui/icons/ShoppingBasket';
-import HistoryIcon from '@material-ui/icons/HistoryTwoTone';
-import HomeIcon from '@material-ui/icons/Home';
-import { withRouter } from "react-router-dom";
-
 const axios = require('axios').default;
 
-class UserMenu extends React.Component {
+class AdminMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -166,50 +160,13 @@ class UserMenu extends React.Component {
     });
   }
 
-  openHome=()=>{
-	this.props.history.push("/customer/home");
-  }
-  
-  openCart=()=>{
-	this.props.history.push("/customer/cart");
-  }
-
-  openOrders=()=>{
-	this.props.history.push("/customer/orders"); 
-  }
-
-  openOrderHistory=()=>{
-	this.props.history.push("/customer/history");
-  }
-
   render() {
     return (
       <Grid container>
-		<IconButton edge="start" style={{color: "black"}} aria-label="menu" onClick={this.openHome} >
-          <HomeIcon/>
-          <Typography variant="h5">Home</Typography>
-        </IconButton>
-		
-		<IconButton edge="start" style={{color: "black"}} aria-label="cart" onClick={this.openOrders}>
-          <OrderIcon/>
-          <Typography variant="h5">Active Orders</Typography>
-        </IconButton>
-
-		<IconButton edge="start" style={{color: "black"}} aria-label="cart" onClick={this.openOrderHistory}>
-          <HistoryIcon/>
-          <Typography variant="h5">Order History</Typography>
-        </IconButton>
-
-		<IconButton edge="start" style={{color: "black"}} aria-label="cart" onClick={this.openCart}>
-          <CartIcon/>
-          <Typography variant="h5">My Shopping Cart</Typography>
-        </IconButton>
-
-		<IconButton edge="end" style={{color: "black"}} aria-label="menu" onClick={this.openMenu} >
+        <IconButton edge="end" style={{color: "black"}} aria-label="menu" onClick={this.openMenu} >
           <SettingsIcon/>
           <Typography variant="h5">My Account</Typography>
         </IconButton>
-
         <Menu
           anchorEl={this.state.anchorEl}
           open={Boolean(this.state.anchorEl)}
@@ -385,4 +342,4 @@ class UserMenu extends React.Component {
   }
 }
 
-export default withRouter(UserMenu);
+export default AdminMenu;

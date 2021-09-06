@@ -74,7 +74,7 @@ class RestaurantCard extends React.Component {
             titleTypographyProps={{variant:'h5'}}
             title={this.props.restaurantInfo.restaurantName}
         />
-        <Link to={"/restaurant/menu/" + this.props.restaurantId} className="link">
+        <Link to={"/admin/restaurant/menu/" + this.props.restaurantId} className="link">
           <img className="photoCardImage" src= {this.props.restaurantInfo.imageUrl} alt={this.props.restaurantInfo.restaurantName} />
         </Link>
         <CardContent style={{backgroundColor: "#e6f7ff"}}>

@@ -18,12 +18,9 @@ class CustomerView extends React.Component {
   render() {
     return this.props.currentUser ? (
       <Router>
-        <Grid container justify="flex-start">
-          <Grid item sm={3}>
-            <CustomerBar />
-          </Grid>
+        <Grid container justify="space-evenly">
           <Grid item sm={9}>
-            <div className="grid-item">
+            <div className="grid-main">
               <Switch>
                 <Route path="/customer/home" render={props => <CustomerHome {...props} currentUser={this.props.currentUser} />} />
                 <Route path="/customer/cart" render={props => <ShopCart {...props} currentUser={this.props.currentUser} />} />

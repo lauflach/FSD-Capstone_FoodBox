@@ -56,7 +56,7 @@ class DishCard extends React.Component {
         />
         <img className="dishCardImage" src= {this.props.dish.imageUrl} alt={this.props.dish.dishName} />
         <CardActions style={{backgroundColor: "#e6f7ff"}}>
-          {this.props.currentUser.type !== "restaurant" ?
+          {this.props.currentUser.type !== "admin" ?
           <Grid container justify="center" alignItems="center">
             <IconButton disabled={this.state.number === 0} onClick={this.handleMinus}>
               <RemoveIcon />
